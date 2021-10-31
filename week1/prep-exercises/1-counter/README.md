@@ -1,6 +1,6 @@
 # Building a counter
 
-The counter is one of the best way to learn about state management as it is nice and simple and isolates the management of state. Let's create a simple number counter, starting from 0 until infinity!
+The counter is one of the best way to learn about state management as it is nice and simple and isolates the management of state. Let's create a simple number counter, starting from 0 until infinity (or actually 10 as we will block it there!)!
 
 1. Run `create-react-app` in this folder to create your environment
 2. Create 3 functional components called `<Counter>`, `<Count>` and `<Button>`
@@ -12,7 +12,7 @@ The counter is one of the best way to learn about state management as it is nice
 
 ## Things to think about
 
-Building this little App should be straightforward, now let's get those *brain juices* flowing. Before the session on Sunday have a think about the following:
+Building this little App should be straightforward, now let's get those brain juices flowing. Before the session on Sunday have a think about the following:
 
 - How would you implement a decrement button that lowers the count by 1? Would you make 2 different <Button> functions or would you add props to the component to handle the change in text?
 - Once you can decrement as well, how would you implement it never going below 0?
