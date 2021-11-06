@@ -17,7 +17,7 @@ Always start with a little research:
 - is it clear what needs to be done?
 - do I have all the data available to be able to do what needs to be done?
 
-1. Check out the API and what it returns by going to the URL `https://www.randomuser.me/api?results=1`. We can see that the resulting JSON has a `results` property which is an array and that contains an object describing a person. We are interested in the `first name`, `last name` and `email` fields so locate where those are in the object.
+1. Check out the API and what it returns by going to the URL ç. We can see that the resulting JSON has a `results` property which is an array and that contains an object describing a person. We are interested in the `first name`, `last name` and `email` fields so locate where those are in the object.
 
 ## 3. Create the request
 
@@ -103,7 +103,7 @@ All good! I think we are done...
 
 While writing the tests, something came up. How will our component react if we only give a first name and last name? Let's write a test to see what happens!
 
-1. Copy over your test with the `first_name`, `last_name` and `email` property and see what is the result. Apparently, our application just writes `E-mail: ` without anything after it.
+1. Copy over your test with the `first_name`, `last_name` and `email` property and see what is the result. Apparently, our application just writes `E-mail:` without anything after it.
 2. That is not great, let's make it say `E-mail: --`. That way it is clear that that field was not filled in.
 3. Edit your test to expect the text to be `E-mail: --`. Your test will now be red, time to fix the application so that your test turns green!
 4. Add another test and fix the application to write `--` if there is no `first_name` aswell as if there is no `last_name` field
