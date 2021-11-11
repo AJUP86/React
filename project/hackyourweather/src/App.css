@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+  width: 100%;
+}
+.App {
+  text-align: center;
+}
+.error__headline {
+  margin-top: 2em;
+}
+.header {
+  max-width: 60%;
+  font-size: 3em;
+  margin-left: 20%;
+  margin-top: 2em;
+}
