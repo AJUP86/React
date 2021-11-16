@@ -1,15 +1,19 @@
 import React from "react";
 import "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/styles/city.css";
 
-const City = ({ data }) => {
+const City = ({ data, setData }) => {
+  const deleteCity = (id) => {
+    const newCityList = data.filter((item) => item.id !== id);
+    setData(newCityList);
+  };
   return (
-    <div>
+    <ul>
       {data.map((city, index) => {
         let weatherDescription = "";
         const description = city.weather[0].description.replace(" ", "__");
         weatherDescription = `description__${description}`;
         return (
-          <div
+          <li
             className={weatherDescription}
             key={index}
             data-testid={`city-element-${index}`}
@@ -26,10 +30,18 @@ const City = ({ data }) => {
             <div className="city__coords">
               <p>{`location: ${city.coord.lon}, ${city.coord.lat}`}</p>
             </div>
-          </div>
+            <button
+              className="clear__button"
+              onClick={() => {
+                deleteCity(city.id);
+              }}
+            >
+              X
+            </button>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 export default City;
