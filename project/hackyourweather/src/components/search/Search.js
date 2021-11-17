@@ -2,49 +2,17 @@ import React, { useContext } from "react";
 import City from "../city/City";
 import "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/styles/search.css";
 import { WeatherContext } from "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/context/WeatherContext";
-const APIKEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
-const Search = ({ setIsLoading }) => {
+
+const Search = ({ setISLoading }) => {
   const {
+    fetchData,
+    handleSearchButton,
     search,
-    setSearch,
     data,
     setData,
     error,
-    setError,
     welcome,
-    setWelcome,
   } = useContext(WeatherContext);
-
-  const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${APIKEY}`;
-
-  const handleSearchButton = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
-    console.log(search);
-  };
-
-  const fetchData = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setWelcome(true);
-    try {
-      const request = await fetch(baseUrl);
-      if (request.status > 400) {
-        setError(request.message);
-        throw new Error(`I don't know any city with this name: "${search}".`);
-      } else {
-        const apiData = await request.json();
-        setData([...data, apiData]);
-        console.log(apiData);
-        return apiData;
-      }
-    } catch (err) {
-      setData([]);
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div>

@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/styles/city.css";
-
-const City = ({ data, setData }) => {
-  const deleteCity = (id) => {
-    const newCityList = data.filter((item) => item.id !== id);
-    setData(newCityList);
-  };
+import { WeatherContext } from "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/context/WeatherContext";
+const City = ({ data }) => {
+  const { deleteCity } = useContext(WeatherContext);
   return (
     <ul>
       {data.map((city, index) => {
@@ -13,23 +11,27 @@ const City = ({ data, setData }) => {
         const description = city.weather[0].description.replace(" ", "__");
         weatherDescription = `description__${description}`;
         return (
-          <li
-            className={weatherDescription}
-            key={index}
-            data-testid={`city-element-${index}`}
-          >
-            <h1 className="city__name">{`${city.name}, ${city.sys.country}`}</h1>
-            <div className="weather__info">
-              <h2>{city.weather[0].main}</h2>
-              <p>{city.weather[0].description}</p>
-            </div>
-            <div className="temp__info">
-              <p>{`max temp: ${(city.main.temp_max - 273.15).toFixed(2)} C`}</p>
-              <p>{`min temp: ${(city.main.temp_min - 273.15).toFixed(2)} C`}</p>
-            </div>
-            <div className="city__coords">
-              <p>{`location: ${city.coord.lon}, ${city.coord.lat}`}</p>
-            </div>
+          <li key={index} data-testid={`city-element-${index}`}>
+            <Link to={`/${city.id}`}>
+              <div className={weatherDescription}>
+                <h1 className="city__name">{`${city.name}, ${city.sys.country}`}</h1>
+                <div className="weather__info">
+                  <h2>{city.weather[0].main}</h2>
+                  <p>{city.weather[0].description}</p>
+                </div>
+                <div className="temp__info">
+                  <p>{`max temp: ${(city.main.temp_max - 273.15).toFixed(
+                    2
+                  )} C`}</p>
+                  <p>{`min temp: ${(city.main.temp_min - 273.15).toFixed(
+                    2
+                  )} C`}</p>
+                </div>
+                <div className="city__coords">
+                  <p>{`location: ${city.coord.lon}, ${city.coord.lat}`}</p>
+                </div>
+              </div>
+            </Link>
             <button
               className="clear__button"
               onClick={() => {

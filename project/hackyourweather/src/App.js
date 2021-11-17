@@ -1,17 +1,22 @@
 import "../src/styles/App.css";
 import Search from "./components/search/Search";
-import React, { useState } from "react";
+import React from "react";
 import { WeatherProvider } from "./context/WeatherContext";
-function App() {
-  const [isLoading, setIsLoading] = useState(false);
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Forecast from "./components/forecast/Forecast";
 
+function App() {
   return (
-    <div className="App">
-      <WeatherProvider>
-        <Search data-testid="search-bar" setIsLoading={setIsLoading} />
-        {isLoading && <h2>Is Loading...</h2>}
-      </WeatherProvider>
-    </div>
+    <WeatherProvider>
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Search data-testid="search-bar" />} />
+            <Route path="/:cityId" element={<Forecast />} />
+          </Routes>
+        </Router>
+      </div>
+    </WeatherProvider>
   );
 }
 

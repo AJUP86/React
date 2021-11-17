@@ -211,5 +211,8 @@ h1.city__name {
 }
 
 .clear__button {
-  border-radius: 60%;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+
+  margin-top: 3px;
 }
