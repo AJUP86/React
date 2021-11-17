@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/styles/city.css";
-import { WeatherContext } from "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/context/WeatherContext";
+import "../../styles/city.css";
+import { WeatherContext } from "../../context/WeatherContext";
 const City = ({ data }) => {
   const { deleteCity, pageIsLoading, isLoading } = useContext(WeatherContext);
   return (

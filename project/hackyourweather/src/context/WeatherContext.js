@@ -60,6 +60,10 @@ export const WeatherProvider = ({ children }) => {
   };
 
   return (
-    <WeatherContext.Provider value={values}>{children}</WeatherContext.Provider>
+    <WeatherContext.Provider value={values}>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>ERROR...</div>}
+      {children}
+    </WeatherContext.Provider>
   );
 };

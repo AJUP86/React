@@ -1,18 +1,11 @@
 import React, { useContext } from "react";
 import City from "../city/City";
-import "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/styles/search.css";
-import { WeatherContext } from "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/context/WeatherContext";
+import "../../styles/search.css";
+import { WeatherContext } from "../../context/WeatherContext";
 
-const Search = ({ setISLoading }) => {
-  const {
-    fetchData,
-    handleSearchButton,
-    search,
-    data,
-    setData,
-    error,
-    welcome,
-  } = useContext(WeatherContext);
+const Search = () => {
+  const { fetchData, handleSearchButton, search, data, setData, error } =
+    useContext(WeatherContext);
 
   return (
     <div>
@@ -35,7 +28,7 @@ const Search = ({ setISLoading }) => {
         </form>
       </div>
       <div>
-        {welcome === false && (
+        {data?.length === 0 && !error && (
           <h2>Find out the weather of your favorite cities!</h2>
         )}
         {data?.length > 0 ? (
