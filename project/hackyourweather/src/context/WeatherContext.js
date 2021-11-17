@@ -1,7 +1,6 @@
 import React, { useState, createContext } from "react";
 
 export const WeatherContext = createContext();
-const APIKEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 export const WeatherProvider = ({ children }) => {
   const [search, setSearch] = useState("");
@@ -9,13 +8,12 @@ export const WeatherProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [welcome, setWelcome] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const APIKEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
   const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${APIKEY}`;
 
   const handleSearchButton = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
-    console.log(search);
   };
 
   const fetchData = async (e) => {
@@ -30,7 +28,6 @@ export const WeatherProvider = ({ children }) => {
       } else {
         const apiData = await request.json();
         setData([...data, apiData]);
-        console.log(apiData);
         return apiData;
       }
     } catch (err) {
@@ -44,6 +41,9 @@ export const WeatherProvider = ({ children }) => {
     const newCityList = data.filter((item) => item.id !== id);
     setData(newCityList);
   };
+  const pageIsLoading = () => {
+    setIsLoading(true);
+  };
   const values = {
     search,
     data,
@@ -56,6 +56,7 @@ export const WeatherProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     deleteCity,
+    pageIsLoading,
   };
 
   return (

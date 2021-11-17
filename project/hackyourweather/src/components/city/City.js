@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/styles/city.css";
 import { WeatherContext } from "/Users/alejandrourroz/Desktop/hyf/React/project/hackyourweather/src/context/WeatherContext";
 const City = ({ data }) => {
-  const { deleteCity } = useContext(WeatherContext);
+  const { deleteCity, pageIsLoading, isLoading } = useContext(WeatherContext);
   return (
     <ul>
       {data.map((city, index) => {
@@ -12,7 +12,7 @@ const City = ({ data }) => {
         weatherDescription = `description__${description}`;
         return (
           <li key={index} data-testid={`city-element-${index}`}>
-            <Link to={`/${city.id}`}>
+            <Link to={`/${city.id}`} onClick={pageIsLoading}>
               <div className={weatherDescription}>
                 <h1 className="city__name">{`${city.name}, ${city.sys.country}`}</h1>
                 <div className="weather__info">
@@ -43,6 +43,7 @@ const City = ({ data }) => {
           </li>
         );
       })}
+      {isLoading && <h2>Loading...</h2>}
     </ul>
   );
 };
